@@ -41,7 +41,6 @@ def command_line() -> argparse.Namespace:
                       help='remove downloaded album dir when generated PDF file.')
 
   # downloader args
-  parser.add_argument('--output', '-o', dest='output_dir', action='store', default=Path.cwd(), help='output directory')
   parser.add_argument('--threads', '-t', dest='threads', action='store', type=int, default=os.cpu_count(),
                       help='how many download threads')
   parser.add_argument('--retries', '-R', dest='retries', action='store', type=int, default=5, help='download retries')
@@ -50,6 +49,7 @@ def command_line() -> argparse.Namespace:
                       help='delay between downloading multiple albums')
   parser.add_argument('--format', dest='foldername_format', action='store', default='%t',
                       help='format album folder name')
+    parser.add_argument('--output', '-o', dest='output_dir', type=Path, action='store', default=Path.cwd(), help='output directory')
 
   return parser.parse_args()
 
